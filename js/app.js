@@ -1,21 +1,10 @@
 define(function(require, exports, module) {
     'use strict';
 
-    var jQuery = require('lib/jquery'),
-        Backbone = require('lib/backbone');
-
-    var LoginPageView = Backbone.View.extend({
-        render: function () {
-            $(this.el).html('This is login page.');
-        }
-    });
-
-
-    var BooksPageView = Backbone.View.extend({
-        render: function () {
-            $(this.el).html('This is books page.');
-        }
-    });
+    var $ = require('lib/jquery'),
+        Backbone = require('lib/backbone'),
+        LoginPageView = require('./login/login_view'),
+        BooksPageView = require('./books/books_view');
 
 
     var Workspace = Backbone.Router.extend({
@@ -35,6 +24,7 @@ define(function(require, exports, module) {
             var loginPageView = new LoginPageView({
                 el: 'body'
             });
+
             loginPageView.render();
         },
 
@@ -42,6 +32,7 @@ define(function(require, exports, module) {
             var booksPageView = new BooksPageView({
                 el: 'body'
             });
+
             booksPageView.render();
         },
 
