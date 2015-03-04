@@ -3,11 +3,20 @@ define(function(require, exports, module) {
 
     var $ = require('lib/jquery'),
         Backbone = require('lib/backbone'),
+        Goggles = require('lib/goggles'),
         LoginPageView = require('./login/login_view'),
-        BooksPageView = require('./books/books_view');
+        BooksPageView = require('./books/books_view'),
+        settings = JSON.parse(require('text!../local_settings.json')),
+        goggles = new Goggles({
+            apiKey: settings.apiKey,
+            clientId: settings.clientId,
+            scope: [
+                'https://www.googleapis.com/auth/books'
+            ]
+        });
 
 
-    var Workspace = Backbone.Router.extend({
+    var Router = Backbone.Router.extend({
         routes: {
             // Default path.
             '': 'loginPage',
@@ -22,7 +31,9 @@ define(function(require, exports, module) {
 
         loginPage: function() {
             var loginPageView = new LoginPageView({
-                el: 'body'
+                el: 'body',
+                goggles: goggles,
+                router: this
             });
 
             loginPageView.render();
@@ -30,7 +41,8 @@ define(function(require, exports, module) {
 
         booksPage: function() {
             var booksPageView = new BooksPageView({
-                el: 'body'
+                el: 'body',
+                goggles: goggles
             });
 
             booksPageView.render();
@@ -48,6 +60,6 @@ define(function(require, exports, module) {
         }
     });
 
-    new Workspace();
+    new Router;
     Backbone.history.start();
 });
