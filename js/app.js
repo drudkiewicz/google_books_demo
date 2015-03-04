@@ -10,9 +10,7 @@ define(function(require, exports, module) {
         goggles = new Goggles({
             apiKey: settings.apiKey,
             clientId: settings.clientId,
-            scope: [
-                'https://www.googleapis.com/auth/books'
-            ]
+            scope: settings.scope
         });
 
 
@@ -42,7 +40,8 @@ define(function(require, exports, module) {
         booksPage: function() {
             var booksPageView = new BooksPageView({
                 el: 'body',
-                goggles: goggles
+                goggles: goggles,
+                bookshelfId: settings.bookshelfId
             });
 
             booksPageView.render();
