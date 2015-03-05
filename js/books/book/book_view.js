@@ -41,7 +41,7 @@ define(function(require, exports, module) {
                         'volumeId': self.model.get('id')
                     }
                 }).execute(function (response) {
-                    if (response.error) {
+                    if (response && response.error) {
                         // TODO display some alert
                     } else {
                         self.model.collection.remove(self.model);
