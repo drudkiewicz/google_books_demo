@@ -3,7 +3,7 @@ define(function(require, exports, module) {
 
     var _ = require('lib/underscore'),
         Backbone = require('lib/backbone'),
-        BooksTemplate = require('text!./my_books_view.html'),
+        MyBooksTemplate = require('text!./my_books_view.html'),
         BooksListView = require('books/books_list/books_list_view');
 
     return Backbone.View.extend({
@@ -14,7 +14,7 @@ define(function(require, exports, module) {
         render: function () {
             var self = this;
 
-            this.$el.html(BooksTemplate);
+            this.$el.html(MyBooksTemplate);
             this.goggles.then(function (gapi) {
                 gapi.client.request({
                     'path': '/books/v1/mylibrary/bookshelves/' + self.bookshelfId + '/volumes'
