@@ -22,12 +22,19 @@ define(function(require, exports, module) {
             });
         },
         renderMyBooksList: function (response) {
-            this.booksListView = new BooksListView({
-                el: this.$('.books-list'),
-                books: response.items
-            });
+            if (response.error) {
+                this.$('.books-list').text('Something goes wrong, please refresh the page');
+            } else {
+                this.booksListView = new BooksListView({
+                    el: this.$('.books-list'),
+                    books: response.items,
+                    allowRemove: true,
+                    goggles: this.goggles,
+                    bookshelfId: this.bookshelfId
+                });
 
-            this.booksListView.render();
+                this.booksListView.render();
+            }
         }
     });
 });
