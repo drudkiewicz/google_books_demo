@@ -54,7 +54,7 @@ define(function(require, exports, module) {
                         this.renderBookSearchResults(response.items);
                     }
                 }, self));
-            })
+            });
         },
         enterKeyHandler: function (event) {
             if (event.keyCode === 13) {
