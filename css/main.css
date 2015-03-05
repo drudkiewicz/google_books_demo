@@ -1,3 +1,10 @@
+body {
+	background-image: url("/images/bookshelf.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
 .hidden {
     display: none !important;
 }
@@ -20,6 +27,18 @@ a {
 	background: #FFFFFF;
 }
 
-body {
-	background-image: url("/images/bookshelf.jpg");
+.book-table {
+	width: 100%;
+}
+
+.book-thumbnail {
+	padding-bottom: 20px;
+}
+
+.book-thumbnail > img {
+	height: 100px;
+}
+
+th {
+	text-align: center;
 }

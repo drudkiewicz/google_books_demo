@@ -23,7 +23,7 @@ define(function(require, exports, module) {
         },
         renderMyBooksList: function (response) {
             if (response.error) {
-                this.$('.books-list').text('Something goes wrong, please refresh the page');
+                this.$('.books-list').text('Something went wrong, please refresh the page');
             } else {
                 this.booksListView = new BooksListView({
                     el: this.$('.books-list'),

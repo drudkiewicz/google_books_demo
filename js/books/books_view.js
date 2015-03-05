@@ -7,6 +7,9 @@ define(function(require, exports, module) {
         BooksSearchView = require('./books_search/books_search_view');
 
     return Backbone.View.extend({
+        events: {
+            'bookAdded': 'renderMyBooksView'
+        },
         initialize: function (options) {
             this.goggles = options.goggles;
             this.bookshelfId = options.bookshelfId;
