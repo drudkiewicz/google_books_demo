@@ -5,3 +5,21 @@
 a {
     cursor: pointer;
 }
+
+.container {
+	width: 970px;
+}
+
+.login-tile {
+	margin: 0 auto;
+	margin-top: 200px;
+	float: none;
+}
+
+.tile {
+	background: #FFFFFF;
+}
+
+body {
+	background-image: url("/images/bookshelf.jpg");
+}

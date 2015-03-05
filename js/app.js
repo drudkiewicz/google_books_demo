@@ -29,7 +29,7 @@ define(function(require, exports, module) {
 
         loginPage: function() {
             var loginPageView = new LoginPageView({
-                el: 'body',
+                el: '.container',
                 goggles: goggles,
                 router: this
             });
@@ -39,7 +39,7 @@ define(function(require, exports, module) {
 
         booksPage: function() {
             var booksPageView = new BooksPageView({
-                el: 'body',
+                el: '.container',
                 goggles: goggles,
                 bookshelfId: settings.bookshelfId
             });
@@ -50,7 +50,7 @@ define(function(require, exports, module) {
         // Shows invoice page.
         invoicePage: function(id) {
           var invoicePageView = new InvoicePageView({
-            el: 'body',
+            el: '.container',
 
             // Pass parameter to the view.
             id: id
