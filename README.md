@@ -14,18 +14,22 @@ Clone this repo and create "local_settings.json" file in the project root, put i
             "https://www.googleapis.com/auth/books"
         ],
         "bookshelfId": 0
-}```
+}
+```
 
 Install all node dependencies
 ```
-npm install```
+npm install
+```
 
 Install bower packages
 ```
-bower install```
+bower install
+```
 
 Serve the application with ANY server.
 ```
-sudo python -m SimpleHTTPServer 80```
+sudo python -m SimpleHTTPServer 80
+```
 
 Make sure you have the domain you are hosting on (it may be "http://localhost") added to your allowed javascript origins in google OAuth settings (Apis & Auth -> Credentials -> OAuth -> Javascript Origins).
