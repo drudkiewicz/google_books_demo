@@ -12,7 +12,6 @@ define(function(require, exports, module) {
                 this.set('thumbnail', '/images/no_image.jpg');
             }
             this.set('title', options.volumeInfo.title);
-            this.set('pages', options.volumeInfo.pageCount);
             this.set('previewLink', options.volumeInfo.previewLink);
         }
     });

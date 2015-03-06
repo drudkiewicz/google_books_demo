@@ -23,7 +23,6 @@ define(function(require, exports, module) {
             this.$('.book-thumbnail img').attr('src', this.model.get('thumbnail'));
             this.$('.title a').attr('href', this.model.get('previewLink')).text(this.model.get('title'));
             this.$('.authors').text(this.model.get('authors').join(', '));
-            this.$('.pages').text(this.model.get('pages'));
 
             if (this.options.allowAdd) {
                 this.$el.append('<td><a class="add-book fui-plus-circle"></a></td>');

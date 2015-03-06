@@ -26,7 +26,7 @@ define(function(require, exports, module) {
                     volumeInfo: {
                         title: 'book',
                         authors: ['John Smith']
-                    } 
+                    }
                 }, {
                     id: '2',
                     volumeInfo: {
