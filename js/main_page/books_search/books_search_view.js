@@ -35,14 +35,12 @@ define(function(require, exports, module) {
                     'params': {
                         'q': queryString
                     }
-                }).execute(_.bind(function (response) {
-                    if (response.error) {
-                        this.$('.books-list').html(AlertMessageTemplate);
-                        this.$('.alert').html('Something went wrong...<br>Please try again.');
-                    } else {
-                        this.renderBookSearchResults(response.items);
-                        this.lastQueryString = queryString
-                    }
+                }).then(_.bind(function (response) {
+                    this.renderBookSearchResults(response.result.items);
+                    this.lastQueryString = queryString
+                }, self), _.bind(function () {
+                    this.$('.books-list').html(AlertMessageTemplate);
+                    this.$('.alert').html('Something went wrong...<br>Please try again.');
                 }, self));
             });
         },
