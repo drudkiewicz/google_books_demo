@@ -2,9 +2,8 @@
 module.exports = function(grunt) {
     'use strict';
 
-    // Project configuration.
     grunt.initConfig({
-    // Task configuration.
+        // Concatenates and minifies scripts to one file 
         requirejs: {
             compile: {
                 options: {
@@ -40,7 +39,6 @@ module.exports = function(grunt) {
        }
     });
 
-    // These plugins provide necessary tasks.
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-jasmine');
