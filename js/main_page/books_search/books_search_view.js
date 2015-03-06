@@ -37,7 +37,7 @@ define(function(require, exports, module) {
                     }
                 }).then(_.bind(function (response) {
                     this.renderBookSearchResults(response.result.items);
-                    this.lastQueryString = queryString
+                    this.lastQueryString = queryString;
                 }, self), _.bind(function () {
                     this.$('.books-list').html(AlertMessageTemplate);
                     this.$('.alert').html('Something went wrong...<br>Please try again.');

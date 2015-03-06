@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
     'use strict';
 
-    var $ = require('lib/jquery'),
-        Backbone = require('lib/backbone'),
+    var Backbone = require('lib/backbone'),
         LoginTemplate = require('text!./login_view.html');
 
     return Backbone.View.extend({
@@ -20,6 +19,7 @@ define(function(require, exports, module) {
             var self = this;
 
             this.goggles.login().then(function (response) {
+                /*jshint camelcase: false */
                 if (response.status.signed_in) {
                     self.router.navigate('/books', true);
                 } else {

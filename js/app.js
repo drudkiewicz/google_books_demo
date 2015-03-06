@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
     'use strict';
 
-    var $ = require('lib/jquery'),
-        Backbone = require('lib/backbone'),
+    var Backbone = require('lib/backbone'),
         Goggles = require('lib/goggles'),
         LoginPageView = require('./login/login_view'),
         MainPageView = require('./main_page/main_page_view'),
@@ -45,6 +44,7 @@ define(function(require, exports, module) {
         }
     });
 
-    new Router;
+    /*jshint nonew: false */
+    new Router();
     Backbone.history.start();
 });

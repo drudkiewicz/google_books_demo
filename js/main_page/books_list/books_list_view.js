@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
     'use strict';
 
-    var _ = require('lib/underscore'),
-        Backbone = require('lib/backbone'),
+    var Backbone = require('lib/backbone'),
         BooksListTemplate = require('text!./books_list_view.html'),
         BooksCollection = require('main_page/book/books_collection'),
         BookView = require('main_page/book/book_view');
