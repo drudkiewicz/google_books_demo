@@ -3,7 +3,8 @@ define(function(require, exports, module) {
 
     var _ = require('lib/underscore'),
         Backbone = require('lib/backbone'),
-        BookTemplate = require('text!./book_view.html');
+        BookTemplate = require('text!./book_view.html'),
+        AlertMessageTemplate = require('text!alert_message.html');
 
     return Backbone.View.extend({
         events: {
@@ -42,14 +43,10 @@ define(function(require, exports, module) {
                     'params': {
                         'volumeId': self.model.get('id')
                     }
-                }).execute(function (response) {
-                    if (response && response.error) {
-                        
-                    } else {
-                        self.model.collection.remove(self.model);
-                        self.remove();
-                    }
-                });
+                }).then(_.bind(function (response) {
+                    this.model.collection.remove(this.model);
+                    this.remove();
+                }, self), _.bind(self.renderError, self));
             });
         },
         addBook: function () {
@@ -62,14 +59,14 @@ define(function(require, exports, module) {
                     'params': {
                         'volumeId': self.model.get('id')
                     }
-                }).execute(function (response) {
-                    if (response && response.error) {
-                        // TODO display some alert
-                    } else {
-                        self.$el.trigger('bookAdded');
-                    }
-                });
+                }).then(function (response) {
+                    self.$el.trigger('bookAdded');
+                }, _.bind(self.renderError, self));
             });
+        },
+        renderError: function () {
+            this.$el.after('<tr><td colspan="3">' + AlertMessageTemplate + '</td></tr>');
+            this.$el.next().find('.alert').html('Something went wrong...<br>Please refresh the page and try again.');
         }
     });
 });
