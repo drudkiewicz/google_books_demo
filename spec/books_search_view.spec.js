@@ -137,16 +137,50 @@ define(function(require, exports, module) {
             });
         });
         
-        describe('Gets search response', function () {
+        describe('Build query string', function () {
             beforeEach(function () {
                 booksSearchView.render();
-                booksSearchView.delegateEvents();
             });
 
-            it('should perform a search when query was changed', function () {
+            it('should return "intitle" when only "title" field has value', function () {
                 booksSearchView.$('input[name="title"]').val('test');
 
-                booksSearchView.$('.search-button').trigger('click');
+                expect(booksSearchView.buildQueryString()).toEqual('intitle:test');
+            });
+
+            it('should return "inauthor" when only "author" field has value', function () {
+                booksSearchView.$('input[name="author"]').val('test2');
+
+                expect(booksSearchView.buildQueryString()).toEqual('inauthor:test2');
+            });
+
+            it('should return "intile+inauthor" when both "title" and "author" fields have values', function () {
+                booksSearchView.$('input[name="title"]').val('test3');
+                booksSearchView.$('input[name="author"]').val('test4');
+
+                expect(booksSearchView.buildQueryString()).toEqual('intitle:test3+inauthor:test4');
+            });
+
+            it('should reaturn an empty string when there are no values in both fields', function () {
+                expect(booksSearchView.buildQueryString()).toEqual('');
+            })
+        });
+
+        describe('Renders book search results', function () {
+            beforeEach(function () {
+                booksSearchView.render();
+                booksSearchView.renderBookSearchResults([{
+                    id: '1',
+                    volumeInfo: {
+                        title: 'book',
+                        authors: ['John Smith']
+                    } 
+                }])
+            });
+
+            it('should create BooksListView', function () {
+                expect(booksSearchView.booksListView).toBeDefined();                    
+                expect(booksSearchView.booksListView.$el).toEqual(booksSearchView.$('.books-list'));
             });
         });
     });
