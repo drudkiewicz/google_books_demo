@@ -14,7 +14,7 @@ a {
 }
 
 .container {
-	width: 970px;
+	width: 1215px;
 }
 
 .login-tile {
@@ -23,7 +23,15 @@ a {
 	float: none;
 }
 
-.tile {
+.search-panel {
+	margin-left: 20px;
+	margin-right: 20px;
+	padding-bottom: 24px;
+	height: 135px;
+}
+
+.main-tile {
+	margin-top: 20px;
 	background: #FFFFFF;
 }
 
@@ -39,6 +47,26 @@ a {
 	height: 100px;
 }
 
+.book-row .authors {
+	display: block;
+}
+
 th {
 	text-align: center;
+}
+
+.books-search, .my-books {
+	display: inline-block;
+	width: 550px;
+}
+
+.my-books {
+	margin-left: 42px;
+}
+
+.logo span {
+	font-size: 55px;
+	font-weight: bold;
+	position: relative;
+	top: -36px;
 }

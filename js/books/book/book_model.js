@@ -9,8 +9,7 @@ define(function(require, exports, module) {
             if (options.volumeInfo.imageLinks) {
                 this.set('thumbnail', options.volumeInfo.imageLinks.smallThumbnail);
             } else {
-                // TODO add placeholder
-                this.set('thumbnail', '');
+                this.set('thumbnail', '/images/no_image.jpg');
             }
             this.set('title', options.volumeInfo.title);
             this.set('pages', options.volumeInfo.pageCount);

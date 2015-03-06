@@ -44,7 +44,7 @@ define(function(require, exports, module) {
                     }
                 }).execute(function (response) {
                     if (response && response.error) {
-                        // TODO display some alert
+                        
                     } else {
                         self.model.collection.remove(self.model);
                         self.remove();
