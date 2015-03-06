@@ -1,22 +1,22 @@
 var require = {
-        deps: ['app'],
-        paths: {
-            'text': '../lib/requirejs-text/text',
-            'lib/backbone': '../lib/backbone/backbone',
-            'lib/goggles': '../lib/goggles/goggles',
-            'lib/jquery': '../lib/jquery/dist/jquery',
-            'lib/underscore': '../lib/underscore/underscore'
+    deps: ['app'],
+    paths: {
+        'text': '../lib/requirejs-text/text',
+        'lib/backbone': '../lib/backbone/backbone',
+        'lib/goggles': '../lib/goggles/goggles',
+        'lib/jquery': '../lib/jquery/dist/jquery',
+        'lib/underscore': '../lib/underscore/underscore'
+    },
+    shim: {
+        'lib/backbone': {
+            deps: ['lib/underscore', 'lib/jquery'],
+            exports: 'Backbone'
         },
-        shim: {
-            'lib/backbone': {
-                deps: ['lib/underscore', 'lib/jquery'],
-                exports: 'Backbone'
-            },
-            'lib/goggles': {
-                exports: 'Goggles'
-            },
-            'lib/underscore': {
-                exports: '_'
-            }
+        'lib/goggles': {
+            exports: 'Goggles'
+        },
+        'lib/underscore': {
+            exports: '_'
         }
-    };
+    }
+};
