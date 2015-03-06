@@ -4,9 +4,11 @@ define(function(require, exports, module) {
     var _ = require('lib/underscore'),
         Backbone = require('lib/backbone'),
         BooksSearchTemplate = require('text!./books_search_view.html'),
+        AlertMessageTemplate = require('text!alert_message.html'),
         BooksListView = require('main_page/books_list/books_list_view');
 
     return Backbone.View.extend({
+        lastQueryString: '',
         events: {
             'click .search-button': 'searchBooks',
             'keyup input[name="title"], input[name="author"]': 'enterKeyHandler'
@@ -20,7 +22,32 @@ define(function(require, exports, module) {
         },
         searchBooks: function () {
             var self = this,
-                title = this.$('input[name="title"]').val(),
+                queryString = this.buildQueryString();
+
+            // if query string is empty or it was previously searched, we don't call the API
+            if (!queryString || queryString === this.lastQueryString) {
+                return;
+            }
+
+            this.goggles.then(function (gapi) {
+                gapi.client.request({
+                    'path' : '/books/v1/volumes',
+                    'params': {
+                        'q': queryString
+                    }
+                }).execute(_.bind(function (response) {
+                    if (!response.error) {
+                        this.$('.books-list').html(AlertMessageTemplate);
+                        this.$('.alert').html('Something went wrong...<br>Please try again.');
+                    } else {
+                        this.renderBookSearchResults(response.items);
+                        this.lastQueryString = queryString
+                    }
+                }, self));
+            });
+        },
+        buildQueryString: function () {
+            var title = this.$('input[name="title"]').val(),
                 author = this.$('input[name="author"]').val(),
                 queryString = '',
                 queryItems = [];
@@ -35,26 +62,8 @@ define(function(require, exports, module) {
             }
 
             queryString = queryItems.join('+');
-
-            // if query string is empty we don't call the API
-            if (!queryString) {
-                return;
-            }
-
-            this.goggles.then(function (gapi) {
-                gapi.client.request({
-                    'path' : '/books/v1/volumes',
-                    'params': {
-                        'q': queryString
-                    }
-                }).execute(_.bind(function (response) {
-                    if (response.error) {
-                        // TODO display error
-                    } else {
-                        this.renderBookSearchResults(response.items);
-                    }
-                }, self));
-            });
+            
+            return queryString;
         },
         enterKeyHandler: function (event) {
             if (event.keyCode === 13) {

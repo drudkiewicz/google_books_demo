@@ -26,7 +26,6 @@ define(function(require, exports, module) {
 
         it('should exists', function () {
             expect(mainPageView).toBeDefined();
-            expect(mainPageView.renderBooksSearchView).toBeDefined();
         });
 
         it('should have proper properties', function () {
