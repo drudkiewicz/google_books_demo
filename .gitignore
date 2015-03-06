@@ -1,2 +1,5 @@
 lib/*
 local_settings.json
+static
+node_modules
+jshint.xml

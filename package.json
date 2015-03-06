@@ -1,0 +1,34 @@
+{
+  "name": "my_books",
+  "version": "0.0.0",
+  "description": "",
+  "main": "js/app.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/drudkiewicz/google_books_demo.git"
+  },
+  "author": "Daria Rudkiewicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drudkiewicz/google_books_demo/issues"
+  },
+  "homepage": "https://github.com/drudkiewicz/google_books_demo",
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "karma": "~0.12.31",
+    "karma-qunit": "~0.1.4",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "karma-requirejs": "~0.2.2",
+    "karma-coverage": "~0.2.7",
+    "grunt-karma": "~0.10.1",
+    "grunt-contrib-connect": "~0.9.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-cli": "~0.1.13",
+    "grunt-contrib-requirejs": "~0.4.4",
+    "grunt-contrib-jshint": "~0.11.0",
+    "qunitjs": "~1.17.1"
+  }
+}
