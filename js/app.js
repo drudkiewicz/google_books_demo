@@ -5,26 +5,23 @@ define(function(require, exports, module) {
         Backbone = require('lib/backbone'),
         Goggles = require('lib/goggles'),
         LoginPageView = require('./login/login_view'),
-        BooksPageView = require('./books/books_view'),
+        MainPageView = require('./books/main_page_view'),
         settings = JSON.parse(require('text!../local_settings.json')),
         goggles = new Goggles({
             apiKey: settings.apiKey,
             clientId: settings.clientId,
             scope: settings.scope
-        });
+        }),
+        Router;
 
-
-    var Router = Backbone.Router.extend({
+    Router = Backbone.Router.extend({
         routes: {
             // Default path.
             '': 'loginPage',
 
             'login': 'loginPage',
 
-            'books': 'booksPage',
-
-            // Usage of fragment parameter.
-            'invoice/:id': 'invoicePage'
+            'books': 'mainPage'
         },
 
         loginPage: function() {
@@ -37,25 +34,14 @@ define(function(require, exports, module) {
             loginPageView.render();
         },
 
-        booksPage: function() {
-            var booksPageView = new BooksPageView({
+        mainPage: function() {
+            var mainPageView = new MainPageView({
                 el: '.container',
                 goggles: goggles,
                 bookshelfId: settings.bookshelfId
             });
 
-            booksPageView.render();
-        },
-
-        // Shows invoice page.
-        invoicePage: function(id) {
-          var invoicePageView = new InvoicePageView({
-            el: '.container',
-
-            // Pass parameter to the view.
-            id: id
-          });
-          invoicePageView.render();
+            mainPageView.render();
         }
     });
 

@@ -2,7 +2,7 @@ define(function(require, exports, module) {
     'use strict';
 
     var Backbone = require('lib/backbone'),
-        BooksTemplate = require('text!./books_view.html'),
+        MainPageTemplate = require('text!./main_page_view.html'),
         MyBooksView = require('./my_books/my_books_view'),
         BooksSearchView = require('./books_search/books_search_view');
 
@@ -15,7 +15,7 @@ define(function(require, exports, module) {
             this.bookshelfId = options.bookshelfId;
         },
         render: function () {
-            $(this.el).html(BooksTemplate);
+            $(this.el).html(MainPageTemplate);
 
             this.renderBooksSearchView();
             this.renderMyBooksView();
