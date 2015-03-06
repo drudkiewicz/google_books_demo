@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var MyBooksView = require('main_page/my_books/my_books_view'),
         Goggles = require('lib/goggles');
 
-    describe('Initialize BooksSearchView', function() {
+    describe('Initialize MyBooksView', function() {
         var options,
             myBooksView,
             goggles;
