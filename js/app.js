@@ -5,7 +5,7 @@ define(function(require, exports, module) {
         Backbone = require('lib/backbone'),
         Goggles = require('lib/goggles'),
         LoginPageView = require('./login/login_view'),
-        MainPageView = require('./books/main_page_view'),
+        MainPageView = require('./main_page/main_page_view'),
         settings = JSON.parse(require('text!../local_settings.json')),
         goggles = new Goggles({
             apiKey: settings.apiKey,

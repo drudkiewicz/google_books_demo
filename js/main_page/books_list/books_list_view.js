@@ -4,8 +4,8 @@ define(function(require, exports, module) {
     var _ = require('lib/underscore'),
         Backbone = require('lib/backbone'),
         BooksListTemplate = require('text!./books_list_view.html'),
-        BooksCollection = require('books/book/books_collection'),
-        BookView = require('books/book/book_view');
+        BooksCollection = require('main_page/book/books_collection'),
+        BookView = require('main_page/book/book_view');
 
     return Backbone.View.extend({
         initialize: function (options) {

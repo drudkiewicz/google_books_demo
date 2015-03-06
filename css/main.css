@@ -58,6 +58,7 @@ th {
 .books-search, .my-books {
 	display: inline-block;
 	width: 550px;
+	vertical-align: top;
 }
 
 .my-books {
