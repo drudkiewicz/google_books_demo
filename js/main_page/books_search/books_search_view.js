@@ -36,7 +36,7 @@ define(function(require, exports, module) {
                         'q': queryString
                     }
                 }).execute(_.bind(function (response) {
-                    if (!response.error) {
+                    if (response.error) {
                         this.$('.books-list').html(AlertMessageTemplate);
                         this.$('.alert').html('Something went wrong...<br>Please try again.');
                     } else {
