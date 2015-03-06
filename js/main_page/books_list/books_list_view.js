@@ -19,7 +19,7 @@ define(function(require, exports, module) {
 
                 this.renderBooks();
             } else {
-                this.$el.html('No results');
+                this.$el.text('No results');
             }
         },
         renderBooks: function () {

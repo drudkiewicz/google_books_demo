@@ -1,3 +1,4 @@
+/* global describe, it, beforeEach, expect, jasmine, spyOn */
 define(function(require, exports, module) {
     'use strict';
 

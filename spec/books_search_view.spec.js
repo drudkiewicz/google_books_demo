@@ -1,3 +1,4 @@
+/* global describe, it, beforeEach, expect, jasmine, spyOn */
 define(function(require, exports, module) {
     'use strict';
 
@@ -163,7 +164,7 @@ define(function(require, exports, module) {
 
             it('should reaturn an empty string when there are no values in both fields', function () {
                 expect(booksSearchView.buildQueryString()).toEqual('');
-            })
+            });
         });
 
         describe('Renders book search results', function () {
@@ -175,7 +176,7 @@ define(function(require, exports, module) {
                         title: 'book',
                         authors: ['John Smith']
                     } 
-                }])
+                }]);
             });
 
             it('should create BooksListView', function () {
