@@ -1,4 +1,4 @@
-/* global describe, it, beforeEach, expect, spyOn */
+/* global describe, it, beforeEach, expect, spyOn, jasmine */
 define(function(require, exports, module) {
     'use strict';
 
@@ -36,6 +36,7 @@ define(function(require, exports, module) {
                 goggles: goggles,
                 bookshelfId: 0,
                 allowAdd: true,
+                allowRemove: true,
                 model: model
             };
 
@@ -71,6 +72,29 @@ define(function(require, exports, module) {
                 expect(bookView.$('.authors').text()).toEqual(bookView.model.get('authors').join(', '));
 
                 expect(bookView.$('.add-book').length).toEqual(1);
+                expect(bookView.$('.remove-book').length).toEqual(1);
+            });
+        });
+
+        describe('Click on "remove-book" and "add-book" icons', function () {
+            beforeEach(function () {
+                spyOn(bookView, 'removeBook');
+                spyOn(bookView, 'addBook');
+                
+                bookView.render();
+                bookView.delegateEvents();
+            });
+
+            it('should trigger removeBook on click "remove-book" icon', function () {
+                bookView.$('.remove-book').trigger('click');
+
+                expect(bookView.removeBook).toHaveBeenCalled();
+            });
+
+            it('should trigger addBook on click "add-book" icon', function () {
+                bookView.$('.add-book').trigger('click');
+
+                expect(bookView.addBook).toHaveBeenCalled();
             });
         });
     });
