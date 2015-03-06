@@ -15,7 +15,7 @@ define(function(require, exports, module) {
             this.bookshelfId = options.bookshelfId;
         },
         render: function () {
-            $(this.el).html(MainPageTemplate);
+            this.$el.html(MainPageTemplate);
 
             this.renderBooksSearchView();
             this.renderMyBooksView();
