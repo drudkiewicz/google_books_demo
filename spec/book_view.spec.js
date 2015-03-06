@@ -2,8 +2,7 @@
 define(function(require, exports, module) {
     'use strict';
 
-    var Backbone = require('lib/backbone'),
-        BookView = require('main_page/book/book_view'),
+    var BookView = require('main_page/book/book_view'),
         BookModel = require('main_page/book/book_model'),
         Goggles = require('lib/goggles');
 
@@ -11,7 +10,7 @@ define(function(require, exports, module) {
         var options,
             bookView,
             goggles,
-            model;
+            bookModel;
 
         beforeEach(function () {
             goggles = new Goggles({
@@ -20,7 +19,7 @@ define(function(require, exports, module) {
                 scope: ['someScope']
             });
 
-            model = new BookModel({
+            bookModel = new BookModel({
                 id: '1',
                 volumeInfo: {
                     title: 'book',
@@ -37,7 +36,7 @@ define(function(require, exports, module) {
                 bookshelfId: 0,
                 allowAdd: true,
                 allowRemove: true,
-                model: model
+                model: bookModel
             };
 
             bookView = new BookView(options);
