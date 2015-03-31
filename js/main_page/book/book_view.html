@@ -1,9 +1,19 @@
 <td class="book-thumbnail">
-    <img src="" alt="">
+    <img src="{{thumbnail}}" alt="">
 </td>
 <td class="book-row">
 	<span class="title">
-		<a href=""></a>
+		<a href="{{previewLink}}">{{title}}</a>
 	</span>
 	<span class="authors"></span>
 </td>
+{{#allowAdd}}
+    <td>
+        <a class="add-book fui-plus-circle"></a>
+    </td>
+{{/allowAdd}}
+{{#allowRemove}}
+    <td>
+        <a class="remove-book fui-trash"></a>
+    </td>
+{{/allowRemove}}

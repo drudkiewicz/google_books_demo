@@ -3,6 +3,7 @@ define(function(require, exports, module) {
 
     var _ = require('lib/underscore'),
         Backbone = require('lib/backbone'),
+        Mustache = require('lib/mustache'),
         BookTemplate = require('text!./book_view.html'),
         AlertMessageTemplate = require('text!alert_message.html');
 
@@ -16,21 +17,17 @@ define(function(require, exports, module) {
             this.goggles = options.goggles;
             this.bookshelfId = options.bookshelfId;
             this.options = options;
+
+            this.modelview = {
+                thumbnail: this.model.get('thumbnail'),
+                previewLink: this.model.get('previewLink'),
+                title: this.model.get('title'),
+                allowAdd: this.options.allowAdd,
+                allowRemove: this.options.allowRemove
+            };
         },
         render: function () {
-            this.$el.html(BookTemplate);
-
-            this.$('.book-thumbnail img').attr('src', this.model.get('thumbnail'));
-            this.$('.title a').attr('href', this.model.get('previewLink')).text(this.model.get('title'));
-            this.$('.authors').text(this.model.get('authors').join(', '));
-
-            if (this.options.allowAdd) {
-                this.$el.append('<td><a class="add-book fui-plus-circle"></a></td>');
-            }
-
-            if (this.options.allowRemove) {
-                this.$el.append('<td><a class="remove-book fui-trash"></a></td>');
-            }
+            this.$el.html(Mustache.render(BookTemplate, this.modelview));
         },
         removeBook: function () {
             var self = this;
@@ -64,8 +61,11 @@ define(function(require, exports, module) {
             });
         },
         renderError: function () {
-            this.$el.after('<tr><td colspan="3">' + AlertMessageTemplate + '</td></tr>');
-            this.$el.next().find('.alert').html('Something went wrong...<br>Please refresh the page and try again.');
+            var errorMessage = Mustache.render(AlertMessageTemplate, {
+                error: 'Something went wrong...<br>Please refresh the page and try again.'
+            });
+
+            this.$el.after('<tr><td colspan="3">' + errorMessage + '</td></tr>');
         }
     });
 });
