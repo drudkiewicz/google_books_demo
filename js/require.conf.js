@@ -5,6 +5,7 @@ var require = {
         'lib/backbone': '../lib/backbone/backbone',
         'lib/goggles': '../lib/goggles/goggles',
         'lib/jquery': '../lib/jquery/dist/jquery',
+        'lib/mustache': '../lib/mustache.js/mustache',
         'lib/underscore': '../lib/underscore/underscore'
     },
     shim: {
@@ -14,6 +15,9 @@ var require = {
         },
         'lib/goggles': {
             exports: 'Goggles'
+        },
+        'lib/mustache': {
+            exports: 'Mustache'
         },
         'lib/underscore': {
             exports: '_'

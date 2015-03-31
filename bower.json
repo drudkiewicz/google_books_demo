@@ -21,6 +21,7 @@
     "requirejs": "~2.1.16",
     "flat-ui": "~2.2.2",
     "requirejs-text": "~2.0.14",
-    "goggles": "~0.1.2"
+    "goggles": "~0.1.2",
+    "mustache.js": "~2.0.0"
   }
 }
