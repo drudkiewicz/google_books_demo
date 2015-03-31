@@ -2,6 +2,8 @@ define(function(require, exports, module) {
     'use strict';
 
     var Backbone = require('lib/backbone'),
+        Mustache = require('lib/mustache'),
+        AlertMessageTemplate = require('text!alert_message.html'),
         LoginTemplate = require('text!./login_view.html');
 
     return Backbone.View.extend({
@@ -19,11 +21,14 @@ define(function(require, exports, module) {
             var self = this;
 
             this.goggles.login().then(function (response) {
+                debugger;
                 /*jshint camelcase: false */
                 if (response.status.signed_in) {
                     self.router.navigate('/books', true);
                 } else {
-                    self.$('.error-message').removeClass('hidden');
+                    self.$('.tile').append(Mustache.render(AlertMessageTemplate, {
+                        error: 'Login failed. Please try again.'
+                    }));
                 }
             });
         }
