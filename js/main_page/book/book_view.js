@@ -16,14 +16,14 @@ define(function(require, exports, module) {
         initialize: function (options) {
             this.goggles = options.goggles;
             this.bookshelfId = options.bookshelfId;
-            this.options = options;
 
             this.modelview = {
                 thumbnail: this.model.get('thumbnail'),
                 previewLink: this.model.get('previewLink'),
                 title: this.model.get('title'),
-                allowAdd: this.options.allowAdd,
-                allowRemove: this.options.allowRemove
+                authors: this.model.get('authors').join(', '),
+                allowAdd: options.allowAdd,
+                allowRemove: options.allowRemove
             };
         },
         render: function () {

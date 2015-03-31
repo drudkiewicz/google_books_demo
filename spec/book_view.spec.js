@@ -10,7 +10,8 @@ define(function(require, exports, module) {
         var options,
             bookView,
             goggles,
-            bookModel;
+            bookModel,
+            modelview;
 
         beforeEach(function () {
             goggles = new Goggles({
@@ -39,6 +40,15 @@ define(function(require, exports, module) {
                 model: bookModel
             };
 
+            modelview = {
+                thumbnail: 'thumbnail',
+                previewLink: 'some_link',
+                title: 'book',
+                authors: 'John Smith, Peter Duck',
+                allowAdd: true,
+                allowRemove: true
+            };
+
             bookView = new BookView(options);
         });
 
@@ -55,8 +65,8 @@ define(function(require, exports, module) {
             expect(bookView.bookshelfId).toEqual(jasmine.any(Number));
             expect(bookView.bookshelfId).toBe(options.bookshelfId);
 
-            expect(bookView.options).toBeDefined();
-            expect(bookView.options).toEqual(options);            
+            expect(bookView.modelview).toBeDefined();
+            expect(bookView.modelview).toEqual(modelview);            
         });
 
         describe('Renders BookView', function () {
@@ -65,10 +75,10 @@ define(function(require, exports, module) {
             });
 
             it('should render proper content', function () {
-                expect(bookView.$('.book-thumbnail img').attr('src')).toBe(bookView.model.get('thumbnail'));
-                expect(bookView.$('.title a').attr('href')).toEqual(bookView.model.get('previewLink'));
-                expect(bookView.$('.title a').text()).toEqual(bookView.model.get('title'));
-                expect(bookView.$('.authors').text()).toEqual(bookView.model.get('authors').join(', '));
+                expect(bookView.$('.book-thumbnail img').attr('src')).toBe(modelview.thumbnail);
+                expect(bookView.$('.title a').attr('href')).toEqual(modelview.previewLink);
+                expect(bookView.$('.title a').text()).toEqual(modelview.title);
+                expect(bookView.$('.authors').text()).toEqual(modelview.authors);
 
                 expect(bookView.$('.add-book').length).toEqual(1);
                 expect(bookView.$('.remove-book').length).toEqual(1);
