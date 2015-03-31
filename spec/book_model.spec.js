@@ -74,4 +74,36 @@ define(function(require, exports, module) {
             expect(bookModel.get('thumbnail')).toEqual('/images/no_image.jpg');
         });
     });
+
+    describe('Initialize BookModel without authors', function() {
+        var options,
+            bookModel;
+
+        beforeEach(function () {
+            options = {
+                id: '2',
+                volumeInfo: {
+                    title: 'book',
+                    previewLink: 'some_link',
+                    imageLinks: {
+                        smallThumbnail: 'thumbnail'
+                    }
+                }
+            };
+
+            bookModel = new BookModel(options);
+        });
+
+        it('should exists', function () {
+            expect(bookModel).toBeDefined();
+        });
+
+        it('should have proper properties', function () {
+            expect(bookModel.get('authors')).toBeDefined();
+            expect(bookModel.get('authors')).toEqual(jasmine.any(Array));
+            expect(bookModel.get('authors').length).toEqual(1);
+            expect(bookModel.get('authors')[0]).toEqual(jasmine.any(String));
+            expect(bookModel.get('authors')[0]).toEqual('Unknown Author');
+        });
+    });
 });
