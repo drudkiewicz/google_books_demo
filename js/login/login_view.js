@@ -21,7 +21,6 @@ define(function(require, exports, module) {
             var self = this;
 
             this.goggles.login().then(function (response) {
-                debugger;
                 /*jshint camelcase: false */
                 if (response.status.signed_in) {
                     self.router.navigate('/books', true);
